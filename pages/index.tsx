@@ -3,12 +3,7 @@ import Layout, { siteTitle } from '../components/layout';
 import utilStyles from './index.module.css';
 import Link from 'next/link';
 import { GetStaticProps } from 'next';
-
-export function getData() {
-	// Get file names under /posts
-	const a = [1, 2, 3];
-	return a;
-}
+import { Button, Typography, Unstable_Grid2 as Grid } from '@mui/material';
 
 export default function Home({ initialData }: { initialData: number[] }) {
 	return (
@@ -16,25 +11,35 @@ export default function Home({ initialData }: { initialData: number[] }) {
 			<Head>
 				<title>{siteTitle}</title>
 			</Head>
-			<div className={utilStyles.centerContainer}>
-				<div className={utilStyles.innerContainer}>
-					<div className={utilStyles.title}>
-						Hi! My name’s Hugo Rydel, and I’m a Full Stack Developer
-					</div>
-					<Link className={utilStyles.outlinedButton} href='/conversation'>
-						Click To Begin!
-					</Link>
-				</div>
-			</div>
+			<Grid container gap={10} marginTop={5} justifyContent='center'>
+				<Grid container direction='column' gap={2} alignItems={'center'}>
+					<Grid>
+						<Typography fontFamily='EB Garamond' variant='h3'>
+							Hugo Rydel Full Stack Developer
+						</Typography>
+					</Grid>
+					<Grid>
+						<Typography fontFamily='EB Garamond' variant='h6'>
+							Through clean, performant web development, I help companies create their
+							ideal products
+						</Typography>
+					</Grid>
+					<Grid>
+						<Button variant='outlined'>
+							<Typography fontFamily={'EB Garamond'}>hugorydel@gmail.com</Typography>
+						</Button>
+					</Grid>
+				</Grid>
+			</Grid>
 		</Layout>
 	);
 }
 
-export const getStaticProps: GetStaticProps = async () => {
-	const initialData = getData();
-	return {
-		props: {
-			initialData,
-		},
-	};
-};
+// export const getStaticProps: GetStaticProps = async () => {
+// 	const initialData = getData();
+// 	return {
+// 		props: {
+// 			initialData,
+// 		},
+// 	};
+// };
