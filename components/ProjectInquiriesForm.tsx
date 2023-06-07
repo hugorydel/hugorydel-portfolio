@@ -1,4 +1,4 @@
-import { ErrorMessage, Field, Form, Formik } from 'formik';
+import { ErrorMessage, Field, Form, Formik, FormikHelpers } from 'formik';
 import { Button, Unstable_Grid2 as Grid, TextField } from '@mui/material';
 import InquirySchema, { InquiryTypes } from '../utils/YupValidation';
 
@@ -10,19 +10,10 @@ const ProjectInquiriesForm = () => {
 		project: '',
 	};
 
-	// const validateForm = (values: FormValues) => {
-	// 	const errors = { email: '', password: '' };
-	// 	if (!values.email) {
-	// 		errors.email = 'Required';
-	// 	} else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)) {
-	// 		errors.email = 'Invalid email address';
-	// 	}
-	// 	return errors;
-	// };
-
-	const handleSubmit = (values, props) => {
+	const onSubmit = (values, props: FormikHelpers<any>) => {
+		props.setSubmitting(true);
 		console.log(values);
-		// alert(JSON.stringify(values));
+		alert(JSON.stringify(values));
 		props.resetForm();
 	};
 
@@ -30,12 +21,15 @@ const ProjectInquiriesForm = () => {
 		<>
 			<Formik
 				initialValues={initialValues}
-				// validate={validateForm}
-				onSubmit={handleSubmit}
+				onSubmit={onSubmit}
 				validationSchema={InquirySchema}>
 				{props => {
 					return (
-						<Form>
+						<Form
+							onSubmit={e => {
+								e.preventDefault();
+								props.handleSubmit();
+							}}>
 							<Grid container gap={2}>
 								<Field
 									as={TextField}
