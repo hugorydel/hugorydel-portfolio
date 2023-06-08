@@ -1,4 +1,4 @@
-import Layout from '../../components/layout';
+import Layout from '../../components/Layout';
 import { Unstable_Grid2 as Grid, Typography } from '@mui/material';
 
 interface IndexProps {}
