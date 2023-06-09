@@ -6,7 +6,7 @@ const imageContainerCommonStyle = { position: 'fixed', zIndex: 0, cursor: 'point
 
 export default function Home() {
 	return (
-		<Layout home>
+		<Layout>
 			<Head>
 				<title>{siteTitle}</title>
 			</Head>
