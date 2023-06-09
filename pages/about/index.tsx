@@ -1,9 +1,7 @@
 import Layout from '../../components/Layout';
 import { Unstable_Grid2 as Grid, Typography } from '@mui/material';
 
-interface IndexProps {}
-
-const Index: React.FC<IndexProps> = ({}) => {
+const Index = () => {
 	return (
 		<Layout>
 			<Grid

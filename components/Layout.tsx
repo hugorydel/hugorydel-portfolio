@@ -22,13 +22,7 @@ const containerStyling = {
 	flexDirection: 'column',
 };
 
-export default function Layout({
-	children,
-	home,
-}: {
-	children: React.ReactNode;
-	home?: boolean;
-}) {
+export default function Layout({ children }: { children: React.ReactNode }) {
 	const router = useRouter();
 
 	const isSetUnderlineStyle = (path: '/works' | '/about' | '/contact') => {
