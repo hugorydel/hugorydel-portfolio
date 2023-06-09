@@ -73,20 +73,6 @@ export default function Home() {
 					alt={'Hugo With Dad'}
 				/>
 			</Box>
-			{/* <Box
-				sx={{
-					top: '68%',
-					right: '12%',
-					rotate: '2deg',
-					...imageContainerCommonStyle,
-				}}>
-				<img
-					style={{ maxHeight: '140px', ...imageCommonStyle }}
-					src={`/static/hugo-with-dad.jpg`}
-					srcSet={`/static/hugo-with-dad.jpg`}
-					alt={'Hugo With Dad'}
-				/>
-			</Box> */}
 			<Box
 				sx={{
 					top: '30%',

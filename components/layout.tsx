@@ -8,12 +8,9 @@ import GitHubIcon from '@mui/icons-material/GitHub';
 import { Dancing_Script } from 'next/font/google';
 import { useRouter } from 'next/router';
 import theme from '../theme';
+import { useEffect, useState } from 'react';
 
-export const dancingScript = Dancing_Script({
-	subsets: ['latin'],
-	// display: 'swap',
-	// variable: '--font-sans',
-});
+export const dancingScript = Dancing_Script({ subsets: ['latin'] });
 
 export const siteTitle = 'Hugo Rydel - Portfolio';
 
@@ -24,7 +21,6 @@ const containerStyling = {
 	display: 'flex',
 	flexDirection: 'column',
 };
-const appBarHeight = 90;
 
 export default function Layout({
 	children,
@@ -43,6 +39,44 @@ export default function Layout({
 			transition: 'borderBottom',
 		};
 	};
+	const [scrollPosition, setScrollPosition] = useState(0);
+	const handleScroll = () => {
+		const position = window.scrollY;
+		setScrollPosition(position);
+	};
+
+	const navbarTransitionStyling = {
+		height: 'auto',
+		padding: '2rem 7rem',
+		position: 'fixed',
+		width: '100%',
+		top: 0,
+		zIndex: 999,
+		borderBottom: '1px solid #fff',
+
+		background: theme.palette.background.default,
+		transition: theme.transitions.create(['padding', 'borderBottom'], {
+			easing: theme.transitions.easing.easeOut,
+			duration: theme.transitions.duration.leavingScreen,
+		}),
+		// Transition the app bar to the right when the menu is opened on PC - when persistent
+		...(scrollPosition > 15 && {
+			transition: theme.transitions.create(['padding', 'borderBottom'], {
+				easing: theme.transitions.easing.easeOut,
+				duration: theme.transitions.duration.enteringScreen,
+			}),
+			padding: '1rem 7rem',
+			borderBottom: '1px solid #000',
+		}),
+	};
+
+	useEffect(() => {
+		window.addEventListener('scroll', handleScroll, { passive: true });
+
+		return () => {
+			window.removeEventListener('scroll', handleScroll);
+		};
+	}, []);
 
 	return (
 		<Container sx={containerStyling} disableGutters maxWidth={false}>
@@ -58,39 +92,30 @@ export default function Layout({
 				container
 				justifyContent={'space-between'}
 				alignItems={'center'}
-				sx={{
-					minHeight: appBarHeight,
-					maxHeight: appBarHeight,
-					padding: '3rem 7rem',
-				}}>
+				sx={navbarTransitionStyling}>
 				<Grid container gap={4} fontFamily='EB Garamond'>
-					<Grid sx={isSetUnderlineStyle('/works')}>
-						<Link
-							sx={{ textDecoration: 'none' }}
-							fontWeight={'600'}
-							component={NextJSLink}
-							href='/works'>
-							Works
-						</Link>
-					</Grid>
-					<Grid sx={isSetUnderlineStyle('/about')}>
-						<Link
-							sx={{ textDecoration: 'none' }}
-							fontWeight={'600'}
-							component={NextJSLink}
-							href='/about'>
-							About
-						</Link>
-					</Grid>
-					<Grid sx={isSetUnderlineStyle('/contact')}>
-						<Link
-							sx={{ textDecoration: 'none' }}
-							fontWeight={'600'}
-							component={NextJSLink}
-							href='/contact'>
-							Contact
-						</Link>
-					</Grid>
+					<Link
+						sx={{ textDecoration: 'none', ...isSetUnderlineStyle('/works') }}
+						fontWeight={'600'}
+						component={NextJSLink}
+						href='/works'>
+						Works
+					</Link>
+
+					<Link
+						sx={{ textDecoration: 'none', ...isSetUnderlineStyle('/about') }}
+						fontWeight={'600'}
+						component={NextJSLink}
+						href='/about'>
+						About
+					</Link>
+					<Link
+						sx={{ textDecoration: 'none', ...isSetUnderlineStyle('/contact') }}
+						fontWeight={'600'}
+						component={NextJSLink}
+						href='/contact'>
+						Contact
+					</Link>
 				</Grid>
 				<Grid>
 					<Link sx={{ textDecoration: 'none' }} component={NextJSLink} href='/'>
@@ -145,9 +170,7 @@ export default function Layout({
 					</Link>
 				</Grid>
 			</Grid>
-			<Box
-				component={'main'}
-				sx={{ height: `calc(100% - ${appBarHeight}px)`, overflow: 'auto' }}>
+			<Box component={'main'} sx={{ marginTop: '7rem' }}>
 				{children}
 			</Box>
 		</Container>

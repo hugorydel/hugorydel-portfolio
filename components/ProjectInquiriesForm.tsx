@@ -1,6 +1,27 @@
 import { ErrorMessage, Field, Form, Formik, FormikHelpers } from 'formik';
-import { Button, Unstable_Grid2 as Grid, TextField } from '@mui/material';
+import { Button, Unstable_Grid2 as Grid, TextField, TextFieldProps } from '@mui/material';
 import InquirySchema, { InquiryTypes } from '../utils/YupValidation';
+
+const CustomTextField = (props: TextFieldProps<'outlined'>) => {
+	return (
+		<TextField
+			InputLabelProps={{ style: { fontSize: '.9rem' } }}
+			inputProps={{ style: { fontSize: '.9rem' } }}
+			FormHelperTextProps={{ style: { marginLeft: '.2rem' } }}
+			sx={{
+				'& fieldset': {
+					borderColor: 'rgba(0, 0, 0, 1)',
+					borderWidth: 1,
+					borderRadius: 0,
+				},
+				'& label': {
+					color: '#000',
+				},
+			}}
+			{...props}
+		/>
+	);
+};
 
 const ProjectInquiriesForm = () => {
 	const initialValues: InquiryTypes = {
@@ -30,9 +51,9 @@ const ProjectInquiriesForm = () => {
 								e.preventDefault();
 								props.handleSubmit();
 							}}>
-							<Grid container gap={2}>
+							<Grid container gap={1}>
 								<Field
-									as={TextField}
+									as={CustomTextField}
 									label='Name'
 									type='text'
 									name='name'
@@ -42,7 +63,7 @@ const ProjectInquiriesForm = () => {
 									required
 								/>
 								<Field
-									as={TextField}
+									as={CustomTextField}
 									label='Email'
 									type='email'
 									name='email'
@@ -52,8 +73,8 @@ const ProjectInquiriesForm = () => {
 									required
 								/>
 								<Field
-									as={TextField}
-									label='Phone Number (optional)'
+									as={CustomTextField}
+									label='Phone Number'
 									type='tel'
 									name='phoneNumber'
 									fullWidth
@@ -61,7 +82,7 @@ const ProjectInquiriesForm = () => {
 									error={props.errors.phoneNumber && props.touched.phoneNumber}
 								/>
 								<Field
-									as={TextField}
+									as={CustomTextField}
 									label='Project'
 									type='text'
 									name='project'
@@ -73,11 +94,21 @@ const ProjectInquiriesForm = () => {
 									minRows={2}
 								/>
 								<Grid>
-									You will get a response within the next 24 hours. We'll share our plan
-									for how to create your application, if you chose to work with us.
+									You will get a response within the next 24 hours. We will explain how to
+									create a your application within the set budget.
 								</Grid>
-								<Button variant='outlined' type='submit' disabled={props.isSubmitting}>
-									Submit
+								<Button
+									variant='outlined'
+									color='secondary'
+									type='submit'
+									sx={{
+										marginTop: 1,
+										borderRadius: 0,
+										fontSize: '0.85rem',
+										padding: '5px 1rem',
+									}}
+									disabled={props.isSubmitting}>
+									Submit Inquiry
 								</Button>
 							</Grid>
 						</Form>

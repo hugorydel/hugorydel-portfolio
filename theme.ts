@@ -1,7 +1,8 @@
 import { createTheme, responsiveFontSizes } from '@mui/material/styles';
 
 const theme = createTheme({
-	palette: { primary: { main: '#000' } },
+	palette: { primary: { main: '#000' }, secondary: { main: '#0897D5' } },
+	breakpoints: { values: { xl: 1920, lg: 1100, md: 900, sm: 680, xs: 340 } },
 	components: {
 		MuiCssBaseline: {
 			styleOverrides: themeParam => ({
@@ -16,15 +17,12 @@ const theme = createTheme({
 			}),
 		},
 	},
-	breakpoints: { values: { xl: 1920, lg: 1100, md: 900, sm: 680, xs: 340 } },
 	typography: {
 		button: {
 			textTransform: 'none',
 		},
 	},
 });
-
-export default responsiveFontSizes(theme);
 
 function scrollbarOptions(options: { track: string; thumb: string; active: string }) {
 	return {
@@ -52,3 +50,5 @@ function scrollbarOptions(options: { track: string; thumb: string; active: strin
 		},
 	};
 }
+
+export default responsiveFontSizes(theme);
