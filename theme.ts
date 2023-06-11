@@ -1,8 +1,10 @@
 import { createTheme, responsiveFontSizes } from '@mui/material/styles';
 
 const theme = createTheme({
-	palette: { primary: { main: '#000' }, secondary: { main: '#0897D5' } },
-	breakpoints: { values: { xl: 1920, lg: 1100, md: 900, sm: 680, xs: 340 } },
+	palette: {
+		// mode: 'dark',
+		primary: { main: '#000' },
+	},
 	components: {
 		MuiCssBaseline: {
 			styleOverrides: themeParam => ({
