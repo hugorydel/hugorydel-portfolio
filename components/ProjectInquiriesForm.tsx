@@ -33,7 +33,6 @@ const ProjectInquiriesForm = () => {
 
 	const onSubmit = (values, props: FormikHelpers<any>) => {
 		props.setSubmitting(true);
-		console.log(values);
 		alert(JSON.stringify(values));
 		props.resetForm();
 	};

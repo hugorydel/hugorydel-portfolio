@@ -21,16 +21,9 @@ const containerStyling = {
 	flexDirection: 'column',
 };
 
-import { Sacramento } from 'next/font/google';
 import theme from '../theme';
-import { lato } from './_app';
+import { sacramento } from '../utils/fonts';
 import { useState } from 'react';
-
-export const sacramento = Sacramento({
-	subsets: ['latin'],
-	display: 'swap',
-	weight: ['400'],
-});
 
 export default function Home() {
 	const [checked, setChecked] = useState(false);
@@ -83,35 +76,34 @@ export default function Home() {
 			</Grid>
 			<Grid
 				container
-				sx={{ border: '2px solid #000', margin: '1rem', height: '100%' }}
+				sx={{
+					border: `2px solid ${theme.palette.mode === 'dark' ? '#FFF' : '#000'}`,
+					margin: '1rem',
+					height: '100%',
+				}}
 				direction='row'
 				justifyContent={'center'}
 				alignItems={'center'}>
 				<Grid container direction='column'>
-					<Grid>
-						<Typography className={sacramento.className} sx={{ fontSize: '2rem' }}>
-							Welcome! I'm...
-						</Typography>
-					</Grid>
-					<Grid>
-						<Typography
-							sx={{ fontSize: '6rem', lineHeight: 1, marginBottom: 1 }}
-							fontWeight='700'
-							className={lato.className}>
-							HUGO RYDEL
-						</Typography>
-					</Grid>
+					<Typography sx={{ fontSize: '2rem' }} className={sacramento.className}>
+						Welcome! I'm...
+					</Typography>
+					<Typography
+						sx={{ fontSize: '6rem', lineHeight: 1, marginBottom: 1.5 }}
+						fontWeight='700'>
+						HUGO RYDEL
+					</Typography>
 					<Grid
 						container
 						direction='row'
 						alignItems='center'
 						gap={4}
-						sx={{ marginLeft: 0.5, marginTop: 0.5 }}>
-						<Grid fontWeight={'700'}>DESIGNER</Grid>
+						sx={{ marginLeft: 0.5 }}>
+						<Typography fontWeight={'700'}>DESIGNER</Typography>
 						<CircleIcon sx={{ fontSize: 8 }} />
-						<Grid fontWeight={'700'}>FULL STACK DEVELOPER</Grid>
+						<Typography fontWeight={'700'}>FULL STACK DEVELOPER </Typography>
 						<CircleIcon sx={{ fontSize: 8 }} />
-						<Grid fontWeight={'700'}>STUDENT</Grid>
+						<Typography fontWeight={'700'}>STUDENT </Typography>
 					</Grid>
 				</Grid>
 			</Grid>
@@ -143,7 +135,7 @@ export default function Home() {
 							},
 						}}
 					/>
-					<Typography className={lato.className} margin='auto' sx={{ fontSize: '2rem' }}>
+					<Typography sx={{ fontSize: '2rem' }} margin='auto'>
 						DARK
 					</Typography>
 				</Grid>

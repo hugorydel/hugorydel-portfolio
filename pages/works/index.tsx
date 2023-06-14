@@ -1,44 +1,64 @@
 import Layout from '../../components/Layout';
-import { Divider, Unstable_Grid2 as Grid, Typography } from '@mui/material';
+import { Unstable_Grid2 as Grid, Typography } from '@mui/material';
+import { sacramento } from '../../utils/fonts';
+import WorkPreview, { workPreviewContainerWidth } from '../../components/WorkPreview';
+import { getAllWorks } from '../../utils/api';
+import { WorkType } from '../../interfaces/work';
 
-const projectList = [
-	{ id: 100, title: 'Personal Brand', skills: ['Next.js', 'Typescript', 'Material UI'] },
-	{ id: 101, title: 'Polymastro', skills: ['React.js', 'Typescript', 'Firebase'] },
-	{ id: 102, title: 'Fox Fill', skills: ['React.js', 'Material UI', 'Firebase'] },
-	{ id: 103, title: 'DevCamper API', skills: ['Node.js', 'Express.js', 'Postman'] },
-];
+interface WorksProps {
+	allWorks: WorkType[];
+}
 
-const Index: React.FC = () => {
+const Index: React.FC<WorksProps> = ({ allWorks }) => {
 	return (
 		<Layout>
 			<Grid
 				container
-				justifyContent={'center'}
+				component={'main'}
+				sx={{ marginTop: '10rem', paddingBottom: '5rem' }}
 				alignContent={'center'}
-				direction={'column'}
-				gap={5}
-				paddingTop={3}>
-				<Typography variant='h3'>Projects & Works</Typography>
-				<Grid container direction='column' gap={2}>
-					{projectList.map(project => {
-						return (
-							<>
-								<Grid container justifyContent={'space-between'}>
-									<Grid>{project.title}</Grid>
-									<Grid container>
-										{project.skills.map(skill => {
-											return <Grid>{skill}</Grid>;
-										})}
-									</Grid>
-								</Grid>
-								<Divider />
-							</>
-						);
-					})}
+				direction={'column'}>
+				<Typography
+					className={sacramento.className}
+					sx={{ fontSize: '1.4rem' }}
+					textAlign='center'>
+					Selected Works
+				</Typography>
+				<Typography sx={{ fontSize: '3.5rem', fontWeight: 800 }} textAlign='center'>
+					SIMPLE, BOLD, & FUNCTIONAL
+				</Typography>
+				<Typography
+					sx={{ fontSize: '1.2rem', fontWeight: 800, maxWidth: '550px', margin: 'auto' }}
+					textAlign='center'>
+					THE BELOW PROJECTS BEST ILLUSTRATE THESE QUALITIES IN MY RECENT WORK
+				</Typography>
+				<Grid
+					container
+					direction='row'
+					sx={{ maxWidth: workPreviewContainerWidth * 3, margin: 'auto', marginTop: 7 }}>
+					{allWorks.map(({ coverImage, title, skills, slug }, index) => (
+						<WorkPreview
+							coverImage={coverImage}
+							title={title}
+							skills={skills}
+							slug={slug}
+							key={`${index}`}
+						/>
+					))}
 				</Grid>
 			</Grid>
 		</Layout>
 	);
 };
+
+export async function getStaticProps() {
+	const allWorks = getAllWorks(['title', 'skills', 'coverImage', 'slug']);
+
+	return {
+		props: {
+			allWorks,
+		},
+	};
+}
 
 export default Index;

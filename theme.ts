@@ -1,8 +1,9 @@
 import { createTheme, responsiveFontSizes } from '@mui/material/styles';
+import { lato } from './utils/fonts';
 
 const theme = createTheme({
 	palette: {
-		// mode: 'dark',
+		mode: 'dark',
 		primary: { main: '#000' },
 	},
 	components: {
@@ -20,6 +21,7 @@ const theme = createTheme({
 		},
 	},
 	typography: {
+		fontFamily: lato.style.fontFamily,
 		button: {
 			textTransform: 'none',
 		},
