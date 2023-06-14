@@ -1,6 +1,5 @@
 import Layout from '../../components/Layout';
 import { Unstable_Grid2 as Grid, Typography } from '@mui/material';
-import { sacramento } from '../../utils/fonts';
 import WorkPreview, { workPreviewContainerWidth } from '../../components/WorkPreview';
 import { getAllWorks } from '../../utils/api';
 import { WorkType } from '../../interfaces/work';
@@ -18,10 +17,7 @@ const Index: React.FC<WorksProps> = ({ allWorks }) => {
 				sx={{ marginTop: '10rem', paddingBottom: '5rem' }}
 				alignContent={'center'}
 				direction={'column'}>
-				<Typography
-					className={sacramento.className}
-					sx={{ fontSize: '1.4rem' }}
-					textAlign='center'>
+				<Typography variant='secondary' sx={{ fontSize: '1.4rem' }} textAlign='center'>
 					Selected Works
 				</Typography>
 				<Typography sx={{ fontSize: '3.5rem', fontWeight: 800 }} textAlign='center'>

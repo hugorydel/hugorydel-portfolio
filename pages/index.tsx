@@ -4,7 +4,6 @@ import NextJSLink from 'next/link';
 import CheckBoxOutlineBlankSharpIcon from '@mui/icons-material/CheckBoxOutlineBlankSharp';
 import CheckBoxSharpIcon from '@mui/icons-material/CheckBoxSharp';
 import CircleIcon from '@mui/icons-material/Circle';
-
 import {
 	Unstable_Grid2 as Grid,
 	Container,
@@ -12,6 +11,8 @@ import {
 	Link,
 	Typography,
 } from '@mui/material';
+import theme from '../theme';
+import { useState } from 'react';
 
 const containerStyling = {
 	width: '100%',
@@ -20,10 +21,6 @@ const containerStyling = {
 	display: 'flex',
 	flexDirection: 'column',
 };
-
-import theme from '../theme';
-import { sacramento } from '../utils/fonts';
-import { useState } from 'react';
 
 export default function Home() {
 	const [checked, setChecked] = useState(false);
@@ -85,7 +82,7 @@ export default function Home() {
 				justifyContent={'center'}
 				alignItems={'center'}>
 				<Grid container direction='column'>
-					<Typography sx={{ fontSize: '2rem' }} className={sacramento.className}>
+					<Typography variant='secondary' sx={{ fontSize: '2rem' }}>
 						Welcome! I'm...
 					</Typography>
 					<Typography

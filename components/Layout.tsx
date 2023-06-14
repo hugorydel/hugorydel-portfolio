@@ -13,7 +13,6 @@ import NextJSLink from 'next/link';
 import MenuIcon from '@mui/icons-material/Menu';
 import theme from '../theme';
 import { useEffect, useState } from 'react';
-import { sacramento } from '../utils/fonts';
 
 export const siteTitle = 'Hugo Rydel - Portfolio';
 
@@ -91,7 +90,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 				sx={navbarTransitionStyling}>
 				<Link sx={{ textDecoration: 'none' }} component={NextJSLink} href='/'>
 					<Typography
-						className={sacramento.className}
+						variant='secondary'
 						sx={{ fontSize: '2rem', color: theme.palette.text.primary }}>
 						hugo r.
 					</Typography>

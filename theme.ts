@@ -1,5 +1,23 @@
 import { createTheme, responsiveFontSizes } from '@mui/material/styles';
-import { lato } from './utils/fonts';
+import { lato, sacramento } from './utils/fonts';
+
+declare module '@mui/material/styles' {
+	interface TypographyVariants {
+		primary: React.CSSProperties;
+		secondary: React.CSSProperties;
+	}
+	interface TypographyVariantsOptions {
+		primary?: React.CSSProperties;
+		secondary?: React.CSSProperties;
+	}
+}
+
+declare module '@mui/material/Typography' {
+	interface TypographyPropsVariantOverrides {
+		primary: true;
+		secondary: true;
+	}
+}
 
 const theme = createTheme({
 	palette: {
@@ -22,6 +40,15 @@ const theme = createTheme({
 	},
 	typography: {
 		fontFamily: lato.style.fontFamily,
+		body1: {
+			fontFamily: lato.style.fontFamily,
+		},
+		primary: {
+			fontFamily: lato.style.fontFamily,
+		},
+		secondary: {
+			fontFamily: sacramento.style.fontFamily,
+		},
 		button: {
 			textTransform: 'none',
 		},
