@@ -2,21 +2,32 @@ import { useRouter } from 'next/router';
 import ErrorPage from 'next/error';
 import { getWorkBySlug, getAllWorks } from '../../utils/api';
 import Head from 'next/head';
-import markdownToHtml from '../../utils/markdownToHtml';
 import { WorkType } from '../../interfaces/work';
 import Layout from '../../components/Layout';
-import { Box } from '@mui/material';
+import { Box, Unstable_Grid2 as Grid, Link, Typography } from '@mui/material';
+import NextJSLink from 'next/link';
+import theme from '../../theme';
+import { ReactMarkdown } from 'react-markdown/lib/react-markdown';
+import Image from 'next/image';
 
 interface WorkProps {
 	work: WorkType;
+	moreWorks: { before: string | null; after: string | null };
 }
 
-export default function Work({ work }: WorkProps) {
+export default function Work({ work, moreWorks }: WorkProps) {
 	const router = useRouter();
-	const title = `${work.title} | Works`;
+	const siteTitle = `${work.title} | Works`;
 	if (!router.isFallback && !work?.slug) {
 		return <ErrorPage statusCode={404} />;
 	}
+
+	const buttonStyling = {
+		textDecoration: 'none',
+		border: `2px solid ${theme.palette.mode === 'dark' ? '#FFF' : '#000'}`,
+		padding: '.5rem 1rem',
+		borderRadius: '5px',
+	};
 
 	return (
 		<Layout>
@@ -24,29 +35,92 @@ export default function Work({ work }: WorkProps) {
 				<div>Loading…</div>
 			) : (
 				<Box
-					component={'article'}
 					sx={{
 						margin: 'auto',
 						marginTop: '10rem',
 						paddingBottom: '5rem',
 						display: 'flex',
 						flexDirection: 'column',
-						alignItems: 'center',
+						alignItems: 'flex-start',
 						maxWidth: '550px',
 					}}>
 					<Head>
-						<title>{title}</title>
+						<title>{siteTitle}</title>
 						<meta property='og:image' content={work.ogImage.url} />
 					</Head>
-					<h1>
-						{work.coverImage} {title} {work.date}
-					</h1>
-					<div>
-						<div
-							// className={markdownStyles['markdown']}
-							dangerouslySetInnerHTML={{ __html: work.content }}
-						/>
-					</div>
+
+					<Link component={NextJSLink} sx={{ textDecoration: 'none' }} href={`/works`}>
+						<Typography
+							sx={{
+								fontSize: '1rem',
+								color: theme.palette.text.primary,
+								marginBottom: 1,
+							}}>
+							{`<--`} Go Back
+						</Typography>
+					</Link>
+					<Typography variant='h4' display='block'>
+						{work.title} | {work.date}
+					</Typography>
+					<Grid
+						component={'article'}
+						container
+						display='column'
+						gap={3}
+						marginTop={4}
+						alignItems={'center'}
+						justifyContent='stretch'>
+						<ReactMarkdown
+							components={{
+								h1: props => <Typography children={props.children} variant='h1' />,
+								h2: props => <Typography children={props.children} variant='h2' />,
+								h3: props => <Typography children={props.children} variant='h3' />,
+								p: props => <Typography children={props.children} variant='body1' />,
+								img: props => (
+									<Image
+										src={props.src}
+										alt={props.alt}
+										width={0}
+										height={0}
+										sizes='100vw'
+										style={{ width: '100%', height: 'auto' }}
+									/>
+								),
+							}}>
+							{work.content}
+						</ReactMarkdown>
+					</Grid>
+					<Grid
+						container
+						direction='row'
+						justifyContent={'space-between'}
+						width={'100%'}
+						marginTop={10}>
+						{moreWorks.before ? (
+							<Link
+								sx={buttonStyling}
+								component={NextJSLink}
+								href={`/works/${moreWorks.before}`}>
+								<Typography sx={{ fontSize: '1rem', color: theme.palette.text.primary }}>
+									{`<--`} Previous
+								</Typography>
+							</Link>
+						) : (
+							<div></div>
+						)}
+						{moreWorks.after ? (
+							<Link
+								sx={buttonStyling}
+								component={NextJSLink}
+								href={`/works/${moreWorks.after}`}>
+								<Typography sx={{ fontSize: '1rem', color: theme.palette.text.primary }}>
+									Next {`-->`}
+								</Typography>
+							</Link>
+						) : (
+							<div></div>
+						)}
+					</Grid>
 				</Box>
 			)}
 		</Layout>
@@ -69,13 +143,15 @@ export async function getStaticProps({ params }: Params) {
 		'ogImage',
 		'coverImage',
 	]);
-	const content = await markdownToHtml(work.content || '');
+	const works = getAllWorks(['slug']);
+	const indexOfWork = works.findIndex(value => value.slug === params.slug);
 
 	return {
 		props: {
-			work: {
-				...work,
-				content,
+			work,
+			moreWorks: {
+				before: works[indexOfWork - 1]?.slug || works[works.length - 1]?.slug || null,
+				after: works[indexOfWork + 1]?.slug || works[0]?.slug || null,
 			},
 		},
 	};

@@ -15,7 +15,7 @@ const Index: React.FC<WorksProps> = ({ allWorks }) => {
 				container
 				component={'main'}
 				sx={{ marginTop: '10rem', paddingBottom: '5rem' }}
-				alignContent={'center'}
+				alignItems={'center'}
 				direction={'column'}>
 				<Typography variant='secondary' sx={{ fontSize: '1.4rem' }} textAlign='center'>
 					Selected Works
@@ -31,7 +31,17 @@ const Index: React.FC<WorksProps> = ({ allWorks }) => {
 				<Grid
 					container
 					direction='row'
-					sx={{ maxWidth: workPreviewContainerWidth * 3, margin: 'auto', marginTop: 7 }}>
+					sx={{
+						margin: 'auto',
+						marginTop: 7,
+						width: {
+							xs: workPreviewContainerWidth * 1,
+							sm: workPreviewContainerWidth * 2,
+							md: workPreviewContainerWidth * 3,
+							lg: workPreviewContainerWidth * 4,
+							xl: workPreviewContainerWidth * 4,
+						},
+					}}>
 					{allWorks.map(({ coverImage, title, skills, slug }, index) => (
 						<WorkPreview
 							coverImage={coverImage}

@@ -9,7 +9,8 @@ const Index = () => {
 				justifyContent={'center'}
 				direction={'column'}
 				gap={5}
-				paddingTop={3}>
+				marginTop={10}
+				padding={3}>
 				<Typography variant='h3'>About</Typography>
 				<Grid container direction='row' gap={3}>
 					<Grid xs={12} md={5.5}>

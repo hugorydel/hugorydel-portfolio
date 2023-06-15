@@ -1,4 +1,4 @@
-import { Box, Grid, Typography } from '@mui/material';
+import { Box, Unstable_Grid2 as Grid, Typography } from '@mui/material';
 import CircleIcon from '@mui/icons-material/Circle';
 import theme from '../theme';
 import Image from 'next/image';
@@ -26,12 +26,14 @@ const WorkPreview: React.FC<WorkPreviewType> = ({ title, skills, coverImage, slu
 		<Grid
 			container
 			direction={'column'}
-			justifyContent='start'
-			alignItems='start'
+			xs={12}
+			sm={6}
+			md={4}
 			gap={0.4}
 			sx={{
 				border: theme.palette.mode === 'dark' ? '1px solid #fff' : '1px solid #000',
 				maxWidth: workPreviewContainerWidth,
+				minWidth: workPreviewContainerWidth,
 				height: 'auto',
 				padding: '1rem',
 			}}>

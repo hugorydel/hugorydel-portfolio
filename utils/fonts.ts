@@ -1,4 +1,4 @@
-import { Lato, Sacramento } from '@next/font/google';
+import { Lato, Sacramento } from 'next/font/google';
 
 export const sacramento = Sacramento({
 	subsets: ['latin'],

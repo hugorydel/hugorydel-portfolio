@@ -81,7 +81,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 					content='Learn about my programming experience, skills, and values'
 				/>
 				<meta name='og:title' content={siteTitle} />
-				<meta property='og:image' content={'/assets/static/home-og-image.png'} />
+				<meta property='og:image' content={'/assets/static/open-graph-home.png'} />
 			</Head>
 			<Grid
 				container
