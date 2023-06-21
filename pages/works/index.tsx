@@ -14,17 +14,34 @@ const Index: React.FC<WorksProps> = ({ allWorks }) => {
 			<Grid
 				container
 				component={'main'}
-				sx={{ marginTop: '10rem', paddingBottom: '5rem' }}
+				sx={{
+					marginTop: '11rem',
+					paddingBottom: '5rem',
+				}}
 				alignItems={'center'}
 				direction={'column'}>
-				<Typography variant='secondary' sx={{ fontSize: '1.4rem' }} textAlign='center'>
+				<Typography
+					variant='secondary'
+					sx={{ fontSize: ['1rem', '1.4rem'] }}
+					textAlign='center'>
 					Selected Works
 				</Typography>
-				<Typography sx={{ fontSize: '3.5rem', fontWeight: 800 }} textAlign='center'>
+				<Typography
+					sx={{
+						fontSize: ['2.5rem', '3.5rem'],
+						fontWeight: 800,
+					}}
+					textAlign='center'>
 					SIMPLE, BOLD, & FUNCTIONAL
 				</Typography>
 				<Typography
-					sx={{ fontSize: '1.2rem', fontWeight: 800, maxWidth: '550px', margin: 'auto' }}
+					sx={{
+						fontSize: ['.8rem', '1.2rem'],
+						fontWeight: 800,
+						maxWidth: ['350px', '550px'],
+						margin: '0 auto',
+						marginTop: '.5rem',
+					}}
 					textAlign='center'>
 					THE BELOW PROJECTS BEST ILLUSTRATE THESE QUALITIES IN MY RECENT WORK
 				</Typography>
@@ -33,18 +50,22 @@ const Index: React.FC<WorksProps> = ({ allWorks }) => {
 					direction='row'
 					sx={{
 						margin: 'auto',
-						marginTop: 7,
+						marginTop: '7rem',
 						width: {
 							xs: workPreviewContainerWidth * 1,
 							sm: workPreviewContainerWidth * 2,
 							md: workPreviewContainerWidth * 3,
-							lg: workPreviewContainerWidth * 4,
+							lg: workPreviewContainerWidth * 3,
 							xl: workPreviewContainerWidth * 4,
 						},
 					}}>
 					{allWorks.map(({ coverImage, title, skills, slug }, index) => (
 						<WorkPreview
-							coverImage={coverImage}
+							coverImage={
+								coverImage.includes('/public/')
+									? coverImage.replace('/public/', '/')
+									: coverImage
+							}
 							title={title}
 							skills={skills}
 							slug={slug}

@@ -1,6 +1,5 @@
 import { Box, Unstable_Grid2 as Grid, Typography } from '@mui/material';
 import CircleIcon from '@mui/icons-material/Circle';
-import theme from '../theme';
 import Image from 'next/image';
 import Link from 'next/link';
 import { WorkPreviewType } from '../interfaces/work';
@@ -30,21 +29,30 @@ const WorkPreview: React.FC<WorkPreviewType> = ({ title, skills, coverImage, slu
 			sm={6}
 			md={4}
 			gap={0.4}
-			sx={{
+			sx={theme => ({
 				border: theme.palette.mode === 'dark' ? '1px solid #fff' : '1px solid #000',
 				maxWidth: workPreviewContainerWidth,
 				minWidth: workPreviewContainerWidth,
 				height: 'auto',
 				padding: '1rem',
-			}}>
+				'&:hover': {
+					background:
+						theme.palette.mode === 'dark'
+							? theme.palette.secondary.main
+							: theme.palette.common.black,
+				},
+			})}>
 			<Link as={`/works/${slug}`} href='/works/[slug]' aria-label={title}>
 				<Box
-					sx={{
+					sx={theme => ({
 						height: 290,
 						display: 'flex',
 						alignItems: 'center',
-						background: theme.palette.common.white,
-					}}>
+						background:
+							theme.palette.mode === 'dark'
+								? theme.palette.grey[400]
+								: theme.palette.common.white,
+					})}>
 					{image}
 				</Box>
 			</Link>

@@ -6,7 +6,6 @@ import { WorkType } from '../../interfaces/work';
 import Layout from '../../components/Layout';
 import { Box, Unstable_Grid2 as Grid, Link, Typography } from '@mui/material';
 import NextJSLink from 'next/link';
-import theme from '../../theme';
 import { ReactMarkdown } from 'react-markdown/lib/react-markdown';
 import Image from 'next/image';
 
@@ -22,15 +21,18 @@ export default function Work({ work, moreWorks }: WorkProps) {
 		return <ErrorPage statusCode={404} />;
 	}
 
-	const buttonStyling = {
-		textDecoration: 'none',
-		border: `2px solid ${theme.palette.mode === 'dark' ? '#FFF' : '#000'}`,
-		padding: '.5rem 1rem',
-		borderRadius: '5px',
+	const buttonStyling = theme => {
+		return {
+			textDecoration: 'none',
+			border: `2px solid ${theme.palette.mode === 'dark' ? '#FFF' : '#000'}`,
+			padding: '.5rem 1rem',
+			borderRadius: '5px',
+		};
 	};
 
 	return (
 		<Layout>
+			{' '}
 			{router.isFallback ? (
 				<div>Loading…</div>
 			) : (
@@ -51,11 +53,11 @@ export default function Work({ work, moreWorks }: WorkProps) {
 
 					<Link component={NextJSLink} sx={{ textDecoration: 'none' }} href={`/works`}>
 						<Typography
-							sx={{
+							sx={theme => ({
 								fontSize: '1rem',
 								color: theme.palette.text.primary,
 								marginBottom: 1,
-							}}>
+							})}>
 							{`<--`} Go Back
 						</Typography>
 					</Link>
@@ -76,16 +78,22 @@ export default function Work({ work, moreWorks }: WorkProps) {
 								h2: props => <Typography children={props.children} variant='h2' />,
 								h3: props => <Typography children={props.children} variant='h3' />,
 								p: props => <Typography children={props.children} variant='body1' />,
-								img: props => (
-									<Image
-										src={props.src}
-										alt={props.alt}
-										width={0}
-										height={0}
-										sizes='100vw'
-										style={{ width: '100%', height: 'auto' }}
-									/>
-								),
+								img: props => {
+									return (
+										<Image
+											src={
+												props.src.includes('/public/')
+													? props.src.replace('/public/', '/')
+													: props.src
+											}
+											alt={props.alt}
+											width={0}
+											height={0}
+											sizes='100vw'
+											style={{ width: '100%', height: 'auto' }}
+										/>
+									);
+								},
 							}}>
 							{work.content}
 						</ReactMarkdown>
@@ -98,10 +106,11 @@ export default function Work({ work, moreWorks }: WorkProps) {
 						marginTop={10}>
 						{moreWorks.before ? (
 							<Link
-								sx={buttonStyling}
+								sx={theme => buttonStyling(theme)}
 								component={NextJSLink}
 								href={`/works/${moreWorks.before}`}>
-								<Typography sx={{ fontSize: '1rem', color: theme.palette.text.primary }}>
+								<Typography
+									sx={theme => ({ fontSize: '1rem', color: theme.palette.text.primary })}>
 									{`<--`} Previous
 								</Typography>
 							</Link>
@@ -110,10 +119,11 @@ export default function Work({ work, moreWorks }: WorkProps) {
 						)}
 						{moreWorks.after ? (
 							<Link
-								sx={buttonStyling}
+								sx={theme => buttonStyling(theme)}
 								component={NextJSLink}
 								href={`/works/${moreWorks.after}`}>
-								<Typography sx={{ fontSize: '1rem', color: theme.palette.text.primary }}>
+								<Typography
+									sx={theme => ({ fontSize: '1rem', color: theme.palette.text.primary })}>
 									Next {`-->`}
 								</Typography>
 							</Link>

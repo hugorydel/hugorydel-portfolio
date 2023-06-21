@@ -1,7 +1,6 @@
 import { ErrorMessage, Field, Form, Formik, FormikHelpers } from 'formik';
 import { Button, Unstable_Grid2 as Grid, TextField, TextFieldProps } from '@mui/material';
 import InquirySchema, { InquiryTypes } from '../utils/YupValidation';
-import theme from '../theme';
 
 const CustomTextField = (props: TextFieldProps<'outlined'>) => {
 	return (
@@ -9,7 +8,7 @@ const CustomTextField = (props: TextFieldProps<'outlined'>) => {
 			InputLabelProps={{ style: { fontSize: '.9rem' } }}
 			inputProps={{ style: { fontSize: '.9rem' } }}
 			FormHelperTextProps={{ style: { marginLeft: '.2rem' } }}
-			sx={{
+			sx={theme => ({
 				'& fieldset': {
 					borderColor:
 						theme.palette.mode === 'dark' ? 'rgba(234, 234, 234, 1)' : 'rgba(0, 0, 0, 1)',
@@ -20,7 +19,7 @@ const CustomTextField = (props: TextFieldProps<'outlined'>) => {
 					color:
 						theme.palette.mode === 'dark' ? 'rgba(234, 234, 234, 1)' : 'rgba(0, 0, 0, 1)',
 				},
-			}}
+			})}
 			{...props}
 		/>
 	);

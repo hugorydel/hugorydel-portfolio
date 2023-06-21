@@ -1,10 +1,10 @@
 ---
 title: 'Polymastro Boards'
 skills: ['React.js', 'Typescript', 'Firebase']
-coverImage: '/assets/work/polymastro-boards/cover.jpg'
+coverImage: '/public/assets/work/polymastro-boards/cover.jpg'
 date: '2022, 2023'
 ogImage:
-  url: '/assets/work/polymastro-boards/cover.jpg'
+  url: '/public/assets/work/polymastro-boards/cover.jpg'
 ---
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Praesent elementum facilisis leo vel fringilla est ullamcorper eget. At imperdiet dui accumsan sit amet nulla facilities morbi tempus. Praesent elementum facilisis leo vel fringilla. Congue mauris rhoncus aenean vel. Egestas sed tempus urna et pharetra pharetra massa massa ultricies.
