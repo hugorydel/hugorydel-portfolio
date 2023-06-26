@@ -32,7 +32,6 @@ export default function Work({ work, moreWorks }: WorkProps) {
 
 	return (
 		<Layout>
-			{' '}
 			{router.isFallback ? (
 				<div>Loading…</div>
 			) : (
@@ -40,6 +39,7 @@ export default function Work({ work, moreWorks }: WorkProps) {
 					sx={{
 						margin: 'auto',
 						marginTop: '10rem',
+						padding: '1rem',
 						paddingBottom: '5rem',
 						display: 'flex',
 						flexDirection: 'column',
@@ -61,7 +61,7 @@ export default function Work({ work, moreWorks }: WorkProps) {
 							{`<--`} Go Back
 						</Typography>
 					</Link>
-					<Typography variant='h4' display='block'>
+					<Typography variant='h3' display='block'>
 						{work.title} | {work.date}
 					</Typography>
 					<Grid

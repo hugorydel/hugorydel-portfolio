@@ -2,7 +2,7 @@
 title: 'DevCamper API'
 skills: ['Node.js', 'Express.js', 'Postman']
 coverImage: '/public/assets/work/devcamper-api/cover.jpg'
-date: '2020'
+date: '2021'
 ogImage:
   url: '/public/assets/work/devcamper-api/cover.jpg'
 ---

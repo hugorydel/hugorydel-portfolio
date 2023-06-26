@@ -2,7 +2,7 @@
 title: 'Polymastro Boards'
 skills: ['React.js', 'Typescript', 'Firebase']
 coverImage: '/public/assets/work/polymastro-boards/cover.jpg'
-date: '2022, 2023'
+date: '2022'
 ogImage:
   url: '/public/assets/work/polymastro-boards/cover.jpg'
 ---

@@ -1,6 +1,6 @@
 import Layout from '../../components/Layout';
 import { Unstable_Grid2 as Grid, Typography } from '@mui/material';
-import WorkPreview, { workPreviewContainerWidth } from '../../components/WorkPreview';
+import WorkPreview from '../../components/WorkPreview';
 import { getAllWorks } from '../../utils/api';
 import { WorkType } from '../../interfaces/work';
 
@@ -51,13 +51,6 @@ const Index: React.FC<WorksProps> = ({ allWorks }) => {
 					sx={{
 						margin: 'auto',
 						marginTop: '7rem',
-						width: {
-							xs: workPreviewContainerWidth * 1,
-							sm: workPreviewContainerWidth * 2,
-							md: workPreviewContainerWidth * 3,
-							lg: workPreviewContainerWidth * 3,
-							xl: workPreviewContainerWidth * 4,
-						},
 					}}>
 					{allWorks.map(({ coverImage, title, skills, slug }, index) => (
 						<WorkPreview
@@ -79,7 +72,7 @@ const Index: React.FC<WorksProps> = ({ allWorks }) => {
 };
 
 export async function getStaticProps() {
-	const allWorks = getAllWorks(['title', 'skills', 'coverImage', 'slug']);
+	const allWorks = getAllWorks(['title', 'skills', 'coverImage', 'slug', 'date']);
 
 	return {
 		props: {

@@ -28,11 +28,11 @@ interface ColorOptionsValues {
 
 const CustomColorModeContext = React.createContext({
 	toggleColorMode: () => {},
-	mode: 'dark',
+	mode: 'light',
 });
 
 export const CustomThemeContextProvider = ({ children }) => {
-	const [mode, setMode] = useState<'light' | 'dark'>('dark');
+	const [mode, setMode] = useState<'light' | 'dark'>('light');
 
 	const initialValues: ColorOptionsValues = React.useMemo(
 		() => ({
@@ -50,7 +50,7 @@ export const CustomThemeContextProvider = ({ children }) => {
 				createTheme({
 					palette: {
 						mode,
-						primary: { main: '#111' },
+						// primary: { main: '#111' },
 						secondary: { main: '#e01505' },
 					},
 					components: {

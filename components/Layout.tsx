@@ -46,7 +46,7 @@ export default function Layout({
 		return {
 			textDecoration: 'none',
 			color: theme.palette.text.primary,
-			fontSize: '2rem',
+			fontSize: ['1.5rem', '2rem', '2.5rem'],
 			fontWeight: '900',
 		};
 	};
@@ -71,58 +71,65 @@ export default function Layout({
 				<meta property='og:image' content={'/assets/static/open-graph-home.png'} />
 			</Head>
 			{isOpenMenu ? (
-				<Grid
-					container
-					direction={'column'}
-					justifyContent={'stretch'}
-					alignItems={'center'}
-					textAlign={'center'}
-					sx={theme => ({
-						backgroundColor: theme.palette.secondary.main,
-						zIndex: 1000,
-						position: 'absolute',
-						width: '100%',
-						boxSizing: 'border-box',
-						height: '100vh',
-					})}>
+				<>
 					<Grid
 						container
-						direction='column'
-						alignItems={'flex-end'}
+						direction='row'
+						justifyContent={'flex-end'}
+						alignItems={'center'}
 						width={'100%'}
-						sx={{ padding: ['.5rem 1.2rem', '1.3rem 2.5rem'] }}>
-						<IconButton
-							onClick={handleMenuOpen}
-							sx={{
-								fontSize: ['16px', '34px'],
-							}}>
-							<CloseIcon />
+						sx={{
+							maxHeight: '80px',
+							padding: ['.5rem .9rem', '1rem 2rem'],
+							// position: 'fixed',
+							marginRight: 111,
+							zIndex: 999,
+						}}>
+						<IconButton onClick={handleMenuOpen}>
+							<CloseIcon fontSize={'medium'} />
 						</IconButton>
 					</Grid>
-					<Grid container sx={{ margin: 'auto 0' }} gap={6} direction='column'>
-						<Typography variant='secondary' sx={{ fontSize: '2rem' }}>
-							Explore
-						</Typography>
-						<Link
-							sx={theme => fontSizesAtBreakpoints(theme)}
-							component={NextJSLink}
-							href='/works'>
-							WORKS
-						</Link>
-						<Link
-							sx={theme => fontSizesAtBreakpoints(theme)}
-							component={NextJSLink}
-							href='/contact'>
-							CONTACT
-						</Link>
-						<Link
-							sx={theme => fontSizesAtBreakpoints(theme)}
-							component={NextJSLink}
-							href='/info'>
-							INFO
-						</Link>
+					<Grid
+						container
+						direction={'column'}
+						component={'main'}
+						alignItems={'center'}
+						textAlign={'center'}
+						sx={theme => ({
+							backgroundColor: theme.palette.secondary.main,
+							position: 'absolute',
+							width: '100%',
+							height: '100vh',
+						})}>
+						<Grid
+							container
+							sx={{ marginTop: ['10rem', '11rem'] }}
+							gap={6}
+							direction='column'>
+							<Typography variant='secondary' sx={{ fontSize: '1.5rem' }}>
+								Explore
+							</Typography>
+							<Link
+								sx={theme => fontSizesAtBreakpoints(theme)}
+								component={NextJSLink}
+								href='/works'>
+								WORKS
+							</Link>
+							<Link
+								sx={theme => fontSizesAtBreakpoints(theme)}
+								component={NextJSLink}
+								href='/contact'>
+								CONTACT
+							</Link>
+							<Link
+								sx={theme => fontSizesAtBreakpoints(theme)}
+								component={NextJSLink}
+								href='/info'>
+								INFO
+							</Link>
+						</Grid>
 					</Grid>
-				</Grid>
+				</>
 			) : (
 				<>
 					<Grid
@@ -131,16 +138,12 @@ export default function Layout({
 						alignItems={'center'}
 						sx={theme => ({
 							...(home && { display: { md: 'none', lg: 'none', xl: 'none' } }),
-							height: 'auto',
-							padding: ['.5rem .9rem', '1rem 2rem'],
+							maxHeight: '80px',
+							padding: ['.5rem 1rem', '1rem 2rem'],
 							position: 'fixed',
 							width: '100%',
-							top: 0,
 							zIndex: 999,
-							borderBottom:
-								theme.palette.mode === 'dark'
-									? `1px solid ${theme.palette.background.default}`
-									: '1px solid #fff',
+							borderBottom: `1px solid ${theme.palette.background.default}`,
 
 							background: theme.palette.background.default,
 							...(!home && {
@@ -167,9 +170,7 @@ export default function Layout({
 								padding: ['.3rem 1.35rem', '.5rem 2rem'],
 
 								borderBottom:
-									theme.palette.mode === 'dark'
-										? `1px solid #fff`
-										: `1px solid ${theme.palette.background.default}`,
+									theme.palette.mode === 'dark' ? `1px solid #fff` : `1px solid #111`,
 							}),
 						})}>
 						<Link sx={{ textDecoration: 'none' }} component={NextJSLink} href='/'>
@@ -182,8 +183,8 @@ export default function Layout({
 								hugo r.
 							</Typography>
 						</Link>
-						<IconButton onClick={handleMenuOpen} sx={{ fontSize: ['16px', '34px'] }}>
-							<MenuIcon />
+						<IconButton onClick={handleMenuOpen}>
+							<MenuIcon fontSize={'medium'} />
 						</IconButton>
 					</Grid>
 					{children}

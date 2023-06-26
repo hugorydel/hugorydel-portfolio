@@ -42,6 +42,6 @@ export function getAllWorks(fields: string[] = []) {
 	const works = slugs
 		.map(slug => getWorkBySlug(slug, fields))
 		// sort works by date in descending order
-		.sort((work1, work2) => (work1.date > work2.date ? -1 : 1));
+		.sort((work1, work2) => parseInt(work2.date) - parseInt(work1.date));
 	return works;
 }

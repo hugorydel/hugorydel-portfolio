@@ -10,9 +10,10 @@ import { useColorMode } from '../theme';
 const fontSizesAtBreakpoints = (theme: Theme) => {
 	return {
 		color: theme.palette.text.primary,
+		textDecoration: 'none',
 		[theme.breakpoints.up(1000)]: {
 			fontSize: '1.4rem',
-			fontWeight: '900',
+			fontWeight: '700',
 		},
 		[theme.breakpoints.between('md', 1000)]: {
 			fontSize: '1.1rem',
@@ -48,6 +49,12 @@ export default function Home() {
 		<Layout home>
 			<Head>
 				<link rel='icon' href='/favicon.ico' />
+				<link rel='apple-touch-icon' sizes='180x180' href='/apple-touch-icon.png' />
+				<link rel='icon' type='image/png' sizes='32x32' href='/favicon-32x32.png' />
+				<link rel='icon' type='image/png' sizes='16x16' href='/favicon-16x16.png' />
+				<link rel='manifest' href='/favicon/site.webmanifest' />
+				<link rel='mask-icon' href='/favicon/safari-pinned-tab.svg' color='#000000' />
+				<link rel='shortcut icon' href='/favicon.ico' />
 				<meta
 					name='description'
 					content='Learn about my programming experience, skills, and values'
@@ -105,19 +112,22 @@ export default function Home() {
 					</Typography>
 					<Typography
 						variant='body2'
-						sx={{
+						sx={theme => ({
 							fontSize: {
-								xs: '5rem',
+								xs: '6.5rem',
 								sm: '7rem',
-								md: '7rem',
-								lg: '9rem',
-								xl: '9rem',
+								md: '8rem',
+								lg: '8rem',
+								xl: '8rem',
+							},
+							[theme.breakpoints.down(340)]: {
+								fontSize: '6rem',
 							},
 							lineHeight: 1,
 							letterSpacing: [-3, -7],
 							marginBottom: 1.5,
 							textAlign: 'center',
-						}}
+						})}
 						fontWeight='900'>
 						HUGO RYDEL
 					</Typography>
@@ -145,7 +155,7 @@ export default function Home() {
 				bottom={[10, 30]}
 				right={['auto', 50]}
 				left={[10, 'auto']}
-				position='absolute'>
+				position='fixed'>
 				<Grid
 					container
 					direction='row'
