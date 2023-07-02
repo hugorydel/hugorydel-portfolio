@@ -50,7 +50,6 @@ export const CustomThemeContextProvider = ({ children }) => {
 				createTheme({
 					palette: {
 						mode,
-						// primary: { main: '#111' },
 						secondary: { main: '#e01505' },
 					},
 					components: {
@@ -101,6 +100,7 @@ function handleScrollbarStyling(themeParam: Omit<ThemeOptions, 'components'>) {
 				  })
 				: scrollbarOptions({ track: '#edece9', thumb: '#D3D1CB', active: '#e01505' }),
 	};
+
 	function scrollbarOptions(options: { track: string; thumb: string; active: string }) {
 		return {
 			scrollbarColor: `${options.thumb} ${options.track}`,

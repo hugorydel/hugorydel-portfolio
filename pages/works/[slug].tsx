@@ -4,14 +4,7 @@ import { getWorkBySlug, getAllWorks } from '../../utils/api';
 import Head from 'next/head';
 import { WorkType } from '../../interfaces/work';
 import Layout from '../../components/Layout';
-import {
-	Box,
-	Unstable_Grid2 as Grid,
-	Link,
-	List,
-	ListItem,
-	Typography,
-} from '@mui/material';
+import { Box, Unstable_Grid2 as Grid, Link, Typography } from '@mui/material';
 import NextJSLink from 'next/link';
 import { ReactMarkdown } from 'react-markdown/lib/react-markdown';
 import Image from 'next/image';
