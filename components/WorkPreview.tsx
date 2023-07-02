@@ -12,7 +12,12 @@ const WorkPreview: React.FC<WorkPreviewType> = ({ title, skills, coverImage, slu
 			width={0}
 			height={0}
 			sizes='100vw'
-			style={{ width: '100%', height: '290px', objectFit: 'cover' }}
+			style={{
+				width: '100%',
+				minHeight: '290px',
+				maxHeight: '290px',
+				objectFit: 'cover',
+			}}
 		/>
 	);
 
@@ -27,7 +32,7 @@ const WorkPreview: React.FC<WorkPreviewType> = ({ title, skills, coverImage, slu
 			gap={0.4}
 			sx={theme => ({
 				border: theme.palette.mode === 'dark' ? '1px solid #fff' : '1px solid #000',
-				padding: '1rem',
+				padding: '.75rem',
 				cursor: 'pointer',
 				'&:hover': {
 					background: theme.palette.secondary.main,

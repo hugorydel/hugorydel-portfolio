@@ -4,7 +4,14 @@ import { getWorkBySlug, getAllWorks } from '../../utils/api';
 import Head from 'next/head';
 import { WorkType } from '../../interfaces/work';
 import Layout from '../../components/Layout';
-import { Box, Unstable_Grid2 as Grid, Link, Typography } from '@mui/material';
+import {
+	Box,
+	Unstable_Grid2 as Grid,
+	Link,
+	List,
+	ListItem,
+	Typography,
+} from '@mui/material';
 import NextJSLink from 'next/link';
 import { ReactMarkdown } from 'react-markdown/lib/react-markdown';
 import Image from 'next/image';
@@ -44,7 +51,7 @@ export default function Work({ work, moreWorks }: WorkProps) {
 						display: 'flex',
 						flexDirection: 'column',
 						alignItems: 'flex-start',
-						maxWidth: '550px',
+						maxWidth: '650px',
 					}}>
 					<Head>
 						<title>{siteTitle}</title>
@@ -61,23 +68,33 @@ export default function Work({ work, moreWorks }: WorkProps) {
 							{`<--`} Go Back
 						</Typography>
 					</Link>
-					<Typography variant='h3' display='block'>
+					<Typography variant='h3' display='block' sx={{ fontWeight: 'bold' }}>
 						{work.title} | {work.date}
 					</Typography>
-					<Grid
-						component={'article'}
-						container
-						display='column'
-						gap={3}
-						marginTop={4}
-						alignItems={'center'}
-						justifyContent='stretch'>
+					<Grid component={'article'} container gap={2} marginTop={4}>
 						<ReactMarkdown
 							components={{
-								h1: props => <Typography children={props.children} variant='h1' />,
-								h2: props => <Typography children={props.children} variant='h2' />,
-								h3: props => <Typography children={props.children} variant='h3' />,
-								p: props => <Typography children={props.children} variant='body1' />,
+								h1: props => (
+									<Typography children={props.children} width='100%' variant='h3' />
+								),
+								h2: props => (
+									<Typography children={props.children} width='100%' variant='h4' />
+								),
+								h3: props => (
+									<Typography
+										children={props.children}
+										width='100%'
+										variant='h5'
+										sx={{ margin: '.5rem 0' }}
+									/>
+								),
+								p: props => (
+									<Typography
+										children={props.children}
+										variant='body1'
+										sx={{ fontSize: '1.15rem' }}
+									/>
+								),
 								img: props => {
 									return (
 										<Image
@@ -90,10 +107,35 @@ export default function Work({ work, moreWorks }: WorkProps) {
 											width={0}
 											height={0}
 											sizes='100vw'
-											style={{ width: '100%', height: 'auto' }}
+											style={{
+												width: '100%',
+												height: 'auto',
+												margin: '1rem 0 1rem 0',
+											}}
 										/>
 									);
 								},
+								ul: props => (
+									<Box
+										sx={{
+											paddingLeft: 3,
+											direction: 'column',
+											fontSize: '1.15rem',
+										}}
+										component='ul'
+										children={props.children}
+									/>
+								),
+								li: props => (
+									<Box
+										sx={{
+											paddingLeft: 1,
+											marginTop: 0.5,
+										}}
+										children={props.children}
+										component='li'
+									/>
+								),
 							}}>
 							{work.content}
 						</ReactMarkdown>
@@ -101,8 +143,8 @@ export default function Work({ work, moreWorks }: WorkProps) {
 					<Grid
 						container
 						direction='row'
-						justifyContent={'space-between'}
-						width={'100%'}
+						justifyContent='space-between'
+						width='100%'
 						marginTop={10}>
 						{moreWorks.before ? (
 							<Link
