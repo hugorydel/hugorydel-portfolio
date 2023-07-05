@@ -2,6 +2,7 @@ import { ThemeOptions, createTheme, responsiveFontSizes } from '@mui/material/st
 import React from 'react';
 import { useState } from 'react';
 import { CssBaseline, ThemeProvider } from '@mui/material';
+import { lato, sacramento } from './utils/fonts';
 
 declare module '@mui/material/styles' {
 	interface TypographyVariants {
@@ -58,15 +59,15 @@ export const CustomThemeContextProvider = ({ children }) => {
 						},
 					},
 					typography: {
-						fontFamily: 'Lato',
+						fontFamily: lato.style.fontFamily,
 						body1: {
-							fontFamily: 'Lato',
+							fontFamily: lato.style.fontFamily,
 						},
 						primary: {
-							fontFamily: 'Lato',
+							fontFamily: lato.style.fontFamily,
 						},
 						secondary: {
-							fontFamily: 'Sacramento',
+							fontFamily: sacramento.style.fontFamily,
 						},
 						button: {
 							textTransform: 'none',

@@ -1,9 +1,9 @@
 import Layout from '../../components/Layout';
-import { Unstable_Grid2 as Grid, Typography } from '@mui/material';
+import { Unstable_Grid2 as Grid, Link, Theme, Typography } from '@mui/material';
 import WorkPreview from '../../components/WorkPreview';
 import { getAllWorks } from '../../utils/api';
 import { WorkType } from '../../interfaces/work';
-
+import NextJSLink from 'next/link';
 interface WorksProps {
 	allWorks: WorkType[];
 }
@@ -22,28 +22,43 @@ const Index: React.FC<WorksProps> = ({ allWorks }) => {
 				direction={'column'}>
 				<Typography
 					variant='secondary'
-					sx={{ fontSize: ['1rem', '1.4rem'] }}
+					sx={{ fontSize: ['1rem', '1.5rem'] }}
 					textAlign='center'>
 					Selected Works
 				</Typography>
 				<Typography
 					sx={{
-						fontSize: ['2.5rem', '3.5rem'],
+						fontSize: ['2.5rem', '3rem'],
 						fontWeight: 800,
+						maxWidth: '900px',
 					}}
 					textAlign='center'>
-					SIMPLE, BOLD, & FUNCTIONAL
+					A STRIKING DESIGN AND A STRONG EMPATHY FOR MY USERS MAKES FOR A MEMORABLE,
+					INTUITIVE, PRODUCT
 				</Typography>
 				<Typography
 					sx={{
-						fontSize: ['.8rem', '1.2rem'],
-						fontWeight: 800,
-						maxWidth: ['350px', '550px'],
+						fontSize: ['.8rem', '1.4rem'],
+						fontWeight: 300,
+						maxWidth: ['350px', '700px'],
 						margin: '0 auto',
-						marginTop: '.5rem',
+						marginTop: '.6rem',
+						// opacity: 0.8,
 					}}
 					textAlign='center'>
-					THE BELOW PROJECTS BEST ILLUSTRATE THESE QUALITIES IN MY RECENT WORK
+					If you're interested in collaborating or have more questions reach out to me via
+					email or phone by visiting the{' '}
+					<Link
+						sx={theme => ({
+							color: theme.palette.text.primary,
+							fontWeight: 400,
+						})}
+						component={NextJSLink}
+						href='/contact'>
+						contact page
+					</Link>
+					{'. '}
+					Looking forward to hearing from you!
 				</Typography>
 				<Grid
 					container

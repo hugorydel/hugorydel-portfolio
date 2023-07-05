@@ -7,28 +7,23 @@ ogImage:
   url: '/public/assets/work/fox-fill/cover.png'
 ---
 
-### **Key Info**
+I recently completed a project where I collaborated with a client and a co-developer to create a web application that notifies merchants of limited-time bargains in the sneaker industry. The primary objective was to build an application that would allow users to track deals on popular sneaker websites using their preferred accounts. The project utilized various technologies including React.js, Material UI, Figma, and the Chrome Extension API.
 
-- **Project Instructions:** Along with client and co-developer complete an application that notifies merchants of limited-time bargains in the sneaker industry,
-- **Skills Employed:** React.js, MaterialUI, Figma, Chrome Extension API;
+### Key Points
 
-### **Overview**
+**1. Collaboration & Feedback:**
 
-- Regularly met with client and backend engineer to coordinate changes.
-- Prototyped and presented 3 possible designs for the application with Figma.
-- Used React.js and Material UI to make a performant UI.
-- Navigated React and Chrome documentation to make a functional UI.
-- Delivered application before the deadline.
-- Received a cash bonus for extra work.
+The collaboration on this project centered around bi-weekly meetings. What I found immensely useful was to create and present three distinct Figma designs and then to talk about their pros and cons. From the outset, these prototypes helped the client visualize the user interface and provided us with a basis for discussions and feedback. We regularly communicated and adjusted the work based on the client's wants. Visualizing and sharing prototypes for review was an essential part of keeping with the client's vision for the project. Using React.js and Material UI, I developed a performant user interface for the application, which the client tested and gave me feedback on.
 
-### **Details**
+**2. Integrated Chrome API:**
 
-The main functions of this application centered around its chrome popup. With it, users could quickly select which deals they'd like to track, for which popular sites, and using what account.
+The main functionality of the application was centered around a Chrome popup. Users could access this popup and quickly select the deals they wanted to track from popular sneaker websites.
+To achieve this, I extensively studied the documentation for the Chrome Extension API and utilized its features to develop a functional and responsive UI within the Chrome popup.
 
-![Fox Fill Popup](/public/assets/work/fox-fill/fox-fill-popup.png)
+**3. Exceeded Deadline:**
 
-A second essential functionality of the app was the ability to switch out profiles. Doing so allows each user to have a specific set of roles and payments systems. This intends to simplify the act of finding and efficiently purchasing the right order at the right time.
+Throughout the development process, I worked diligently to ensure that the application was delivered before the designated deadline. I followed a well-structured development plan and implemented efficient coding practices to meet this goal.
 
-![FoxFill Website Options](/public/assets/work/fox-fill/foxfill-website-design-option.png)
+**4. In Conclusion:**
 
-With the exception of the patterned background, I designed and built the complete site for the client. Along with a backend engineer, we then connected each of the functionalities to an existing user database and added the tool on Discord for others to download according to the client's wishes.
+The project was successfully completed, resulting in a fully functional Sneaker Deal Application. Users can now track limited-time deals on popular sneaker websites, customize their preferences, and receive timely notifications.

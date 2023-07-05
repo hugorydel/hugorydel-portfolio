@@ -7,12 +7,8 @@ ogImage:
   url: '/public/assets/work/hotel-site/cover.png'
 ---
 
-### Key Info
+I successfully designed and built a simple HTML website template for hotels. This template was specifically created to be presented to potential clients in the hotel industry, showcasing the key features and benefits of their establishments. The project primarily involved the use of HTML, CSS, and JavaScript. This article provides a brief summary of the project, highlighting the main accomplishments and skills employed.
 
-- **Project Instructions:** Build a simple HTML website template for hotels which you could present to clients in that area
-- **Skills Employed:** HTML, CSS, JavaScript
+Using HTML and CSS, I created a standard set of pages that form the foundation of the hotel website template. These included a home page, contact page, and about page.
 
-### Overview
-
-- With the help of HTML & CSS built a standard home page, contact page, and about page.
-- This was my first introduction to publishing a site I've built
+This project served as my first introduction to publishing a website that I had built. It allowed me to understand the process of taking a website from development to a live environment. I gained experience into many technical aspects of publishing a site including web hosting, domain registration, and deployment.

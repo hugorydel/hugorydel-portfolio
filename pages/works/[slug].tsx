@@ -8,6 +8,8 @@ import { Box, Unstable_Grid2 as Grid, Link, Typography } from '@mui/material';
 import NextJSLink from 'next/link';
 import { ReactMarkdown } from 'react-markdown/lib/react-markdown';
 import Image from 'next/image';
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 interface WorkProps {
 	work: WorkType;
@@ -24,7 +26,7 @@ export default function Work({ work, moreWorks }: WorkProps) {
 	const buttonStyling = theme => {
 		return {
 			textDecoration: 'none',
-			border: `2px solid ${theme.palette.mode === 'dark' ? '#FFF' : '#000'}`,
+			border: `1px solid ${theme.palette.mode === 'dark' ? '#FFF' : '#333'}`,
 			padding: '.5rem 1rem',
 			borderRadius: '5px',
 		};
@@ -38,7 +40,7 @@ export default function Work({ work, moreWorks }: WorkProps) {
 				<Box
 					sx={{
 						margin: 'auto',
-						marginTop: '10rem',
+						marginTop: '7rem',
 						padding: '1rem',
 						paddingBottom: '5rem',
 						display: 'flex',
@@ -51,20 +53,34 @@ export default function Work({ work, moreWorks }: WorkProps) {
 						<meta property='og:image' content={work.ogImage.url} />
 					</Head>
 
-					<Link component={NextJSLink} sx={{ textDecoration: 'none' }} href={`/works`}>
-						<Typography
+					<Link
+						component={NextJSLink}
+						sx={{
+							textDecoration: 'none',
+						}}
+						href={`/works`}>
+						<Box
 							sx={theme => ({
 								fontSize: '1rem',
 								color: theme.palette.text.primary,
-								marginBottom: 1,
+								marginBottom: 0.5,
+								display: 'flex',
+								direction: 'row',
+								gap: 0.5,
+								alignItems: 'center',
 							})}>
-							{`<--`} Go Back
-						</Typography>
+							<ArrowBackIcon fontSize='small' />
+							<div>Go Back</div>
+						</Box>
 					</Link>
-					<Typography variant='h3' display='block' sx={{ fontWeight: 'bold' }}>
-						{work.title} | {work.date}
+					<Typography
+						variant='h4'
+						display='block'
+						sx={{ fontWeight: 900, margin: '0rem 0 .5rem 0' }}>
+						{work.title}
 					</Typography>
-					<Grid component={'article'} container gap={2} marginTop={4}>
+					<Typography fontSize={14}>By: Hugo Rydel; Completed: {work.date} </Typography>
+					<Grid component={'article'} container gap={2} marginTop={3}>
 						<ReactMarkdown
 							components={{
 								h1: props => (
@@ -78,14 +94,14 @@ export default function Work({ work, moreWorks }: WorkProps) {
 										children={props.children}
 										width='100%'
 										variant='h5'
-										sx={{ margin: '.5rem 0' }}
+										sx={{ margin: '.1rem 0', fontWeight: 600 }}
 									/>
 								),
 								p: props => (
 									<Typography
 										children={props.children}
 										variant='body1'
-										sx={{ fontSize: '1.15rem' }}
+										sx={{ fontSize: '1rem' }}
 									/>
 								),
 								img: props => {
@@ -111,11 +127,22 @@ export default function Work({ work, moreWorks }: WorkProps) {
 								ul: props => (
 									<Box
 										sx={{
-											paddingLeft: 3,
+											paddingLeft: 2.3,
 											direction: 'column',
 											fontSize: '1.15rem',
 										}}
 										component='ul'
+										children={props.children}
+									/>
+								),
+								ol: props => (
+									<Box
+										sx={{
+											paddingLeft: 2.3,
+											direction: 'column',
+											fontSize: '1.15rem',
+										}}
+										component='ol'
 										children={props.children}
 									/>
 								),
@@ -144,10 +171,19 @@ export default function Work({ work, moreWorks }: WorkProps) {
 								sx={theme => buttonStyling(theme)}
 								component={NextJSLink}
 								href={`/works/${moreWorks.before}`}>
-								<Typography
-									sx={theme => ({ fontSize: '1rem', color: theme.palette.text.primary })}>
-									{`<--`} Previous
-								</Typography>
+								<Box
+									sx={theme => ({
+										fontSize: '1rem',
+										color: theme.palette.text.primary,
+										display: 'flex',
+										direction: 'row',
+										fontWeight: 'bold',
+										gap: 0.5,
+										justifyContent: 'center',
+									})}>
+									<ArrowBackIcon />
+									<div>Previous</div>
+								</Box>
 							</Link>
 						) : (
 							<div></div>
@@ -158,8 +194,16 @@ export default function Work({ work, moreWorks }: WorkProps) {
 								component={NextJSLink}
 								href={`/works/${moreWorks.after}`}>
 								<Typography
-									sx={theme => ({ fontSize: '1rem', color: theme.palette.text.primary })}>
-									Next {`-->`}
+									sx={theme => ({
+										fontSize: '1rem',
+										color: theme.palette.text.primary,
+										display: 'flex',
+										direction: 'row',
+										fontWeight: 'bold',
+										gap: 0.5,
+										justifyContent: 'center',
+									})}>
+									Next <ArrowForwardIcon />
 								</Typography>
 							</Link>
 						) : (
