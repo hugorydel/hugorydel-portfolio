@@ -64,7 +64,6 @@ const Index: React.FC<WorksProps> = ({ allWorks }) => {
 					container
 					direction='row'
 					sx={{
-						margin: 'auto',
 						marginTop: '7rem',
 					}}>
 					{allWorks.map(({ coverImage, title, skills, slug }, index) => (

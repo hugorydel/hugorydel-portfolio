@@ -9,7 +9,7 @@ const WorkPreview: React.FC<WorkPreviewType> = ({ title, skills, coverImage, slu
 	const [isLoading, setIsLoading] = useState(true);
 
 	useEffect(() => {
-		setTimeout(() => setIsLoading(false), 650);
+		setTimeout(() => setIsLoading(false), 450);
 	}, []);
 
 	return (
@@ -43,6 +43,7 @@ const WorkPreview: React.FC<WorkPreviewType> = ({ title, skills, coverImage, slu
 							margin: 'auto',
 							width: '100%',
 							minWidth: '275px',
+							maxWidth: '320px',
 						}}
 					/>
 				) : (
@@ -56,6 +57,7 @@ const WorkPreview: React.FC<WorkPreviewType> = ({ title, skills, coverImage, slu
 							width: '100%',
 							minHeight: '290px',
 							maxHeight: '290px',
+							maxWidth: '320px',
 							objectFit: 'cover',
 						}}
 						sizes='100vw'
