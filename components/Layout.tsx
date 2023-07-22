@@ -106,7 +106,7 @@ export default function Layout({
 						content='Learn about my programming experience, skills, and values'
 					/>
 					<meta name='og:title' content={siteTitle} />
-					<meta property='og:image' content={'/assets/static/open-graph-home.png'} />
+					<meta property='og:image' content={'/open-graph-home.png'} />
 				</Head>
 				{isOpenMenu ? (
 					<>

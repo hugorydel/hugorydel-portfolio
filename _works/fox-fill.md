@@ -1,10 +1,10 @@
 ---
 title: 'Fox Fill Extension'
 skills: ['React.js', 'Material UI', 'Figma']
-coverImage: '/public/assets/work/fox-fill/cover.png'
+coverImage: '/public/work/fox-fill/cover.png'
 date: '2021'
 ogImage:
-  url: '/public/assets/work/fox-fill/cover.png'
+  url: '/public/work/fox-fill/cover.png'
 ---
 
 I recently completed a project where I collaborated with a client and a co-developer to create a web application that notifies merchants of limited-time bargains in the sneaker industry. The primary objective was to build an application that would allow users to track deals on popular sneaker websites using their preferred accounts. The project utilized various technologies including React.js, Material UI, Figma, and the Chrome Extension API.

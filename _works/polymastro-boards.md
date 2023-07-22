@@ -1,10 +1,10 @@
 ---
 title: 'Polymastro Boards'
 skills: ['React.js', 'Typescript', 'Firebase']
-coverImage: '/public/assets/work/polymastro-boards/cover.png'
+coverImage: '/public/work/polymastro-boards/cover.png'
 date: '2022'
 ogImage:
-  url: '/public/assets/work/polymastro-boards/cover.png'
+  url: '/public/work/polymastro-boards/cover.png'
 ---
 
 **A. Summary:**

@@ -1,10 +1,10 @@
 ---
 title: 'Personal Brand 2023'
 skills: ['Next.js', 'Typescript', 'Figma', 'Material UI']
-coverImage: '/public/assets/work/personal-brand-2023/cover.png'
+coverImage: '/public/work/personal-brand-2023/cover.png'
 date: '2023'
 ogImage:
-  url: '/public/assets/work/personal-brand-2023/cover.png'
+  url: '/public/work/personal-brand-2023/cover.png'
 ---
 
 **A. Summary**

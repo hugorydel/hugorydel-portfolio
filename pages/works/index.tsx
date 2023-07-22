@@ -28,13 +28,13 @@ const Index: React.FC<WorksProps> = ({ allWorks }) => {
 				</Typography>
 				<Typography
 					sx={{
-						fontSize: ['2.5rem', '3rem'],
+						fontSize: ['2rem', '2.5rem', '3rem'],
 						fontWeight: 800,
 						maxWidth: '900px',
 					}}
 					textAlign='center'>
-					A STRIKING DESIGN AND A STRONG EMPATHY FOR MY USERS MAKES FOR A MEMORABLE,
-					INTUITIVE, PRODUCT
+					A STRIKING DESIGN AND STRONG EMPATHY FOR MY USERS MAKE FOR MEMORABLE, INTUITIVE,
+					PRODUCTS
 				</Typography>
 				<Typography
 					sx={{
@@ -64,6 +64,7 @@ const Index: React.FC<WorksProps> = ({ allWorks }) => {
 					container
 					direction='row'
 					sx={{
+						width: ['300px', '600px', '900px', '1200px'],
 						marginTop: '7rem',
 					}}>
 					{allWorks.map(({ coverImage, title, skills, slug }, index) => (
